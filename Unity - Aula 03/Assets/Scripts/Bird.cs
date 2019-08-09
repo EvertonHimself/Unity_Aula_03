@@ -42,5 +42,7 @@ public class Bird : MonoBehaviour
         // Triggers the Die trigger.
         anim.SetTrigger("Die");
         isDead = true;
+        // Calls the BirDied() method from the static attribuge from the gamecontroller class.
+        GameController.instance.BirdDied();
     }
 }
