@@ -8,6 +8,8 @@ public class Bird : MonoBehaviour
     private bool isDead = false;
     // Gets the rigidbody2d attached to this game object.
     private Rigidbody2D rb2d;
+    // Gets the ANIMATOR attached to this game object.
+    private Animator anim;
 
     // The force the player is pushed upwards.
     public float upForce = 200f;
@@ -15,6 +17,8 @@ public class Bird : MonoBehaviour
     {
         // Assign this game object's rigidbody to the rb2d variable.
         rb2d = GetComponent<Rigidbody2D>();
+        // Assign this game object's animator to the anim variable.
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -27,13 +31,16 @@ public class Bird : MonoBehaviour
                 rb2d.velocity = Vector2.zero;
                 // The x force is zero because the player doesn't move on the x axis.
                 rb2d.AddForce(new Vector2(0, upForce));
+                // Fires the Flap trigger.
+                anim.SetTrigger("Flap");
             }
         }
     }
-    
     // Checks if the player touched something, if so, turns isDead to true.
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Triggers the Die trigger.
+        anim.SetTrigger("Die");
         isDead = true;
     }
 }
