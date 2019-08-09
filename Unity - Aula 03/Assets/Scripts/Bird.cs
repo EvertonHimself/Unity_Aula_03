@@ -43,6 +43,6 @@ public class Bird : MonoBehaviour
         anim.SetTrigger("Die");
         isDead = true;
         // Calls the BirDied() method from the static attribuge from the gamecontroller class.
-        GameController.instance.BirdDied();
+        GameControl.instance.BirdDied();
     }
 }

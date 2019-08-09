@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour
+public class GameControl : MonoBehaviour
 {
     // Singleton Pattern to make sure that theres only ever one of this game object.
     // Associate this with the class and allows it to be accessible from every script.
-    public static GameController instance;
+    public static GameControl instance;
 
     public GameObject gameOverText;
     public bool gameOver = false;
