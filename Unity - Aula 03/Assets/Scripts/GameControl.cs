@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
@@ -9,8 +10,11 @@ public class GameControl : MonoBehaviour
     // Associate this with the class and allows it to be accessible from every script.
     public static GameControl instance;
     public GameObject gameOverText;
+    public Text scoreText;
     public bool gameOver = false;
     public float scrollSpeed = -1.5f;
+
+    private int score = 0;
 
 
     // Awake is a function that runs before Start().
@@ -34,6 +38,18 @@ public class GameControl : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    // Receives from game control when player scored a point. Will be called from the
+    // column script.
+    public void BirdScored()
+    {
+        if (gameOver)
+        {
+            return;
+        }
+        score++;
+        scoreText.text = "Score: " + score.ToString();
     }
 
     public void BirdDied()
