@@ -39,6 +39,7 @@ public class Bird : MonoBehaviour
     // Checks if the player touched something, if so, turns isDead to true.
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        rb2d.velocity = Vector2.zero;
         // Triggers the Die trigger.
         anim.SetTrigger("Die");
         isDead = true;
